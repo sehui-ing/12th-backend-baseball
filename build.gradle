@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation('com.github.woowacourse-projects:mission-utils:1.0.0')
+    implementation 'com.github.shin-mallang:mission-utils:1.0.0'
 }
 
 test {

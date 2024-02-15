@@ -1,14 +1,14 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
+import mallang.missionutils.test.TestSupport;
 import org.junit.jupiter.api.Test;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static mallang.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static mallang.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class ApplicationTest extends NsTest {
+class ApplicationTest extends TestSupport {
 
     @Test
     void 게임종료_후_재시작() {
