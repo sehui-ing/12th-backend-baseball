@@ -39,10 +39,9 @@ public class Application {
         boolean[] usedNumber = new boolean[10];
         int tmp;
         for (int i = 0; i < 3; i++) {
-            tmp = Randoms.pickNumberInRange(1, 9);
-            while (usedNumber[tmp]) {
+            do {
                 tmp = Randoms.pickNumberInRange(1, 9);
-            }
+            } while (usedNumber[tmp]);
             number[i] = tmp;
             usedNumber[tmp] = true;
         }
