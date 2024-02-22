@@ -12,9 +12,9 @@ public class Application {
     public static void main(String[] args) {
         while (true) {
             startGame();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            System.out.println("게임을 새로 시작하려면 restart, 종료하려면 end를 입력하세요.");
             String choice = Console.readLine();
-            if (choice.equals("2")) {  // 1은 게임 재시작, 2는 게임 종료
+            if (choice.equals("end")) {
                 break;
             }
         }
@@ -111,14 +111,5 @@ public class Application {
                 ballCount++;
         }
         return ballCount;
-    }
-
-    private static boolean contains(int[] array, int target) {
-        for (int value : array) {
-            if (value == target) {
-                return true;
-            }
-        }
-        return false;
     }
 }
