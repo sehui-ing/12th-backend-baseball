@@ -73,33 +73,44 @@ public class Application {
     }
 
     private static String calculateResult(List<Integer> answer, int[] guess) {
-        int strike = 0;
-        int ball = 0;
-
-        for (int i = 0; i < 3; i++) {
-            if (answer.get(i).equals(guess[i])) {
-                strike++;
-            } else if (answer.contains(guess[i])) {
-                ball++;
-            }
-        }
+        int strike = countStrike(answer, guess);
+        int ball = countBall(answer, guess);
 
         if (strike == 3) {
             return "3스트라이크";
         }
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
         if (strike > 0) {
-            result += strike + "스트라이크 ";
+            result.append(strike).append("스트라이크 ");
         }
         if (ball > 0) {
-            result += ball + "볼";
+            result.append(ball).append("볼");
         }
         if (strike == 0 && ball == 0) {
-            result = "낫싱";
+            result = new StringBuilder("낫싱");
         }
 
-        return result;
+        return result.toString();
+    }
+
+    private static int countStrike(List<Integer> answer, int[] guess) {
+        int strikeCount = 0;
+        for (int i = 0; i < 3; i++) {
+            if (answer.get(i).equals(guess[i])) {
+                strikeCount++;
+            }
+        }
+        return strikeCount;
+    }
+
+    private static int countBall(List<Integer> answer, int[] guess) {
+        int ballCount = 0;
+        for (int i = 0; i < 3; i++) {
+            if (!answer.get(i).equals(guess[i]) && answer.contains(guess[i]))
+                ballCount++;
+        }
+        return ballCount;
     }
 
     private static boolean contains(int[] array, int target) {
