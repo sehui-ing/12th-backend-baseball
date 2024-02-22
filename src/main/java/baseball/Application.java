@@ -83,9 +83,15 @@ public class Application {
         }
 
         StringBuilder result = new StringBuilder();
-        appendStrikeCount(result, strike);
-        appendBallCount(result, strike);
-        appendNothing(result, strike, ball);
+        if (strike > 0) {
+            result.append(strike).append("스트라이크 ");
+        }
+        if (ball > 0) {
+            result.append(ball).append("볼");
+        }
+        if (strike == 0 && ball == 0) {
+            result = new StringBuilder("낫싱");
+        }
 
         return result.toString();
     }
@@ -107,23 +113,5 @@ public class Application {
                 ballCount++;
         }
         return ballCount;
-    }
-
-    private static void appendStrikeCount(StringBuilder result, int strike) {
-        if (strike > 0) {
-            result.append(strike).append("스트라이크 ");
-        }
-    }
-
-    private static void appendBallCount(StringBuilder result, int ball) {
-        if (ball > 0) {
-            result.append(ball).append("스트라이크 ");
-        }
-    }
-
-    private static void appendNothing(StringBuilder result, int strike, int ball) {
-        if (strike == 0 && ball == 0) {
-            result.append("낫싱 ");
-        }
     }
 }
