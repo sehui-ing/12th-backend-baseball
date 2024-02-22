@@ -8,13 +8,15 @@ import java.util.List;
 
 public class Application {
 
+    public static final String END_GAME = "2";
+
     //TODO: 숫자 야구 게임 구현
     public static void main(String[] args) {
         while (true) {
             startGame();
-            System.out.println("게임을 새로 시작하려면 restart, 종료하려면 end를 입력하세요.");
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             String choice = Console.readLine();
-            if (choice.equals("end")) {
+            if (choice.equals(END_GAME)) {
                 break;
             }
         }
