@@ -3,6 +3,9 @@ package baseball;
 import mallang.missionutils.Console;
 import mallang.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
 
     //TODO: 숫자 야구 게임 구현
@@ -18,7 +21,7 @@ public class Application {
     }
 
     private static void startGame() {
-        int[] answer = generateRandomNumber();
+        List<Integer> answer = generateRandomNumber();
         boolean isGameOver = false;
 
         while (!isGameOver) {
@@ -34,18 +37,18 @@ public class Application {
         }
     }
 
-    private static int[] generateRandomNumber() {
-        int[] number = new int[3];
+    private static List<Integer> generateRandomNumber() {
+        List<Integer> numbers = new ArrayList<>();
         boolean[] usedNumber = new boolean[10];
         int tmp;
         for (int i = 0; i < 3; i++) {
             do {
                 tmp = Randoms.pickNumberInRange(1, 9);
             } while (usedNumber[tmp]);
-            number[i] = tmp;
+            numbers.add(tmp);
             usedNumber[tmp] = true;
         }
-        return number;
+        return numbers;
     }
 
     private static int[] getUserInput() {
@@ -69,14 +72,14 @@ public class Application {
         return result;
     }
 
-    private static String calculateResult(int[] answer, int[] guess) {
+    private static String calculateResult(List<Integer> answer, int[] guess) {
         int strike = 0;
         int ball = 0;
 
         for (int i = 0; i < 3; i++) {
-            if (answer[i] == guess[i]) {
+            if (answer.get(i).equals(guess[i])) {
                 strike++;
-            } else if (contains(answer, guess[i])) {
+            } else if (answer.contains(guess[i])) {
                 ball++;
             }
         }
